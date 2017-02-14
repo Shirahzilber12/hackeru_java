@@ -1,7 +1,9 @@
 package com.company;
 
-
-public class ArrayList implements List{
+/**
+ * Created by This_user on 14/02/2017.
+ */
+public class ArrayList implements List {
     int [] arr;
     int size;
 
@@ -19,7 +21,7 @@ public class ArrayList implements List{
     public void add(int x) {
         if (size > arr.length)
             copy();
-        arr[size ] = x;
+        arr[size] = x;
         size++;
 
     }
@@ -29,12 +31,12 @@ public class ArrayList implements List{
     public void add(int x, int index) {
         if(index<0||index>=size)
             throw new IndexOutOfBoundsException("לא נכון ");
-             copy();
+        copy();
         for (int i = size; i >index ; i--) {
             arr[i] = arr[i - 1];
         }
-            arr[index] = x;
-            size++;
+        arr[index] = x;
+        size++;
     }
 
     @Override
@@ -44,7 +46,7 @@ public class ArrayList implements List{
         for (int i = index; i < arr.length-1; i++) {
             arr[i] = arr[i + 1];
         }
-            size--;
+        size--;
     }
 
     @Override
@@ -80,13 +82,13 @@ public class ArrayList implements List{
         return temp;
     }
     private void copy() {
-
-        int[] arr2 = new int[size*2];
-        for (int i = 0; i < arr.length; i++) {
-            arr2[i] = arr[i];
+        if (size == arr.length) {
+            int[] arr2 = new int[size * 2];
+            for (int i = 0; i < arr.length; i++)
+                arr2[i] = arr[i];
+            this.arr = arr2;
+            //return arr2;
         }
-        this.arr=arr2;
-        //return arr2;
     }
 
     @Override
@@ -107,3 +109,4 @@ public class ArrayList implements List{
         return s;
     }
 }
+
