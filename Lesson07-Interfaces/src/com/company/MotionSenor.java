@@ -1,9 +1,11 @@
+/*
 package com.company;
 
 
 import java.util.IdentityHashMap;
 
 //מיצגת גלי תנועה
+*/
 /*
 class MotionSenor {
     private MotionSenor listener;
@@ -26,7 +28,8 @@ class MotionSenor {
         void motionDetected(int sensorId);
         }
 }
-*/
+*//*
+
 class MotionSenor {
     private MotionSenor[] listeners;
     int size;
@@ -42,22 +45,26 @@ class MotionSenor {
     listeners=new MotionSenor[10];
         size=0;
     }
+    //גלי תנועה להודיע לכל מי שביקש שיודיעו לו
     void detectMoition(){
         for (int i = 0; i < size; i++) {
-            this.listeners[i].detectMoition();
+            this.listeners[i].detectMoition(123);
         }
 
     }
-    /*public MotionSenor(MotionSenor listener) {
+    */
+/*public MotionSenor(MotionSenor listener) {
 
         this.listener = listener;
-    }*/
+    }*//*
+
 
 
     interface MotionListener{
         void motionDetected(int sensorId);
     }
 }
+//
   class Siren implements MotionSenor.MotionListener{
 
       @Override
@@ -94,3 +101,4 @@ class Police implements MotionSenor.MotionListener {
 
     }
 }
+*/

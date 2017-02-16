@@ -1,7 +1,9 @@
 package com.company;
 
+import com.company.List;
 
-public class LinkList implements List {
+
+public class LinkList implements List  {
     private Node anchor;
     private int size;
     private Node last;
@@ -42,22 +44,22 @@ public class LinkList implements List {
 
     @Override
     public int  get(int index) {
-        if(index>size||index<0)
-            throw new  IndexOutOfBoundsException("ddd") ;
-        Node n = anchor;
-        for (int i = 0; i <index-1; i++) {
+        if (index > size || index < 0)
+            throw new IndexOutOfBoundsException("ddd");
+        Node n = anchor.next;
+        for (int i = 0; i < index ; i++) {
             n = n.next;
         }
-        return n.value;
 
+        return n.value;
     }
 
     @Override
     public int indexOf(int x) {
-        Node n=anchor;
-        for (int i = 0; i <size ; i++) {
+        Node n=anchor.next;
+        for (int i = 0; i <=size ; i++) {
             if(n.value==x) {
-                return i--;
+                return i;
             }
             n=n.next;
         }
@@ -74,35 +76,32 @@ public class LinkList implements List {
         }
         return arr1;
     }
-    //לא נכון !
+
     @Override
     public void add(int x, int index) {
-        Node temp;
-        Node n=anchor;
-        if(index>size||index<0)
-            throw new  IndexOutOfBoundsException("אא להוסיף ") ;
-        if(index==size)
+        if (index > size || index < 0)
+            throw new IndexOutOfBoundsException("אא להוסיף ");
+        if (index == size) {
             add(x);
-        for (int i = 0; i <index-1 ; i++) {
-            n=n.next;
+            return;
         }
-        temp = n.next;
-        n.next=new Node(x);
-        n.next=temp.next;
+
+        Node n = anchor;
+        for (int i = 0; i < index; i++)
+            n = n.next;
+        Node temp = new Node(x);
+        temp.next = n.next;
+        n.next = temp;
         size++;
     }
 
-
-
-    //לא נכון !
     @Override
     public void add(int x) {
         Node n = anchor;
         last.next=new Node(x);
-            last=last.next;
-            size++;
-
-        }
+        last=last.next;
+        size++;
+    }
 
 
     @Override
@@ -135,4 +134,27 @@ public class LinkList implements List {
         stringBuilder.append("}");
         return stringBuilder.toString();
     }
+   /* @Override
+    public Iterator iterator() {
+        current = anchor;
+        return this;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return current.next != null;
+    }
+
+    @Override
+    public Object next() {
+        current = current.next;
+        return current.value;
+    }*/
+
+
+    }
+class Node{
+    private Node node;
+    int size;
+
 }
