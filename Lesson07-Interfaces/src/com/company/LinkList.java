@@ -76,6 +76,7 @@ public class LinkList implements List  {
         }
         return arr1;
     }
+<<<<<<< HEAD
 
     @Override
     public void add(int x, int index) {
@@ -94,6 +95,26 @@ public class LinkList implements List  {
         n.next = temp;
         size++;
     }
+=======
+    //לא נכון !
+   @Override
+    public void add(int x, int index) {
+       if (index > size || index < 0)
+           throw new IndexOutOfBoundsException("אא להוסיף ");
+       if (index == size) {
+           add(x);
+           return;
+       }
+
+       Node n = anchor;
+       for (int i = 0; i < index; i++)
+           n = n.next;
+       Node temp = new Node(x);
+       temp.next = n.next;
+       n.next = temp;
+       size++;
+   }
+>>>>>>> origin/master
 
     @Override
     public void add(int x) {
