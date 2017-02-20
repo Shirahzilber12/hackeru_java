@@ -1,30 +1,31 @@
+
 package com.company;
 
 
-public class ArrayList<T> implements List<T> {
+ class ArrayList<T> implements List<T> {
 
-    int[] arr;
+    T [] arr;
     int size;
 
     public ArrayList(){
-        arr = new int[10];
+        arr = (T[]) new Object[10];
         size = 0;
     }
 
-    public ArrayList(int[] arr){
+    public ArrayList(T[] arr){
         this.arr = arr;
         this.size = arr.length;
     }
 
     @Override
-    public void add(int x) {
+    public void add(T x) {
         makeRoom();
         arr[size++] = x;
     }
 
     private void makeRoom(){
         if(size == arr.length){
-            int[] temp = new int[size * 2];
+            T[] temp = (T[]) new Object[size * 2];
             for (int i = 0; i < size; i++) {
                 temp[i] = arr[i];
             }
@@ -33,7 +34,7 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public void add(int x, int index) {
+    public void add(T x, int index) {
         if(index < 0 || index >= size)
             throw new IndexOutOfBoundsException("what are you doing?");
         makeRoom();
@@ -56,21 +57,21 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public void set(int index, int x) {
+    public void set(int index, T x) {
         if(index < 0 || index >= size)
             throw new IndexOutOfBoundsException("what are you doing?");
         arr[index] = x;
     }
 
     @Override
-    public int get(int index) {
+    public T get(int index) {
         if(index < 0 || index >= size)
             throw new IndexOutOfBoundsException("what are you doing?");
         return arr[index];
     }
 
     @Override
-    public int indexOf(int x) {
+    public int indexOf(T x) {
         for (int i = 0; i < size; i++) {
             if(arr[i] == x)
                 return i;
@@ -92,8 +93,8 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public int[] toArray() {
-        int[] temp = new int[size];
+    public T[] toArray() {
+        T[] temp = (T[]) new Object[size ];
         for (int i = 0; i < size; i++) {
             temp[i] = arr[i];
         }

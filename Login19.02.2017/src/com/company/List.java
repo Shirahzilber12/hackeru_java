@@ -1,23 +1,21 @@
 package com.company;
 
-/**
- * Created by hackeru on 2/19/2017.
- */
+
 public interface List<T> {
 
-    void add(int x);
-    void add(int x, int index);
+    void add(T x);
+    void add(T x, int index);
     void remove(int index);
-    void set(int index, int x);
-    int get(int index);
+    void set(int index, T x);
+    T get(int index);
 
     /**
      * finds an element in the list
      * @param x the element we're looking
      * @return the first position in the list, zero based. returns -1 if not found.
      */
-    int indexOf(int x);
-    int[] toArray();
+    int indexOf(T x);
+    T[] toArray();
 
     int size();
 }
