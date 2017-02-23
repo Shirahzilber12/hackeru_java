@@ -1,14 +1,15 @@
 package com.company;
 
+import static com.company.Main.readInput;
+
 /**
  * Created by hackeru on 2/19/2017.
  */
 public class User {
 
 
-    String userName;
-    String password;
-
+    private String userName;
+    private String password;
 
     public static final int ASCII_a = 97;
     public static final int ASCII_z = 122;
@@ -35,6 +36,20 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (obj == this)
+            return true;
+        if (obj instanceof User) {
+            User other = (User) obj;
+
+            return this.userName.equals(other.userName);
+        }
+    }
+
 
 
     //בדיקה אם הuserName נכון
@@ -80,6 +95,22 @@ public class User {
         }
         System.out.println("the password dont good ");
         return false;
+    }
+    public static String reversString(){
+        System.out.println("enter string ");
+        String s=readInput();
+        byte[] currentByte = s.getBytes();
+        for (int i = currentByte.length; i >0 ; i--) {
+            System.out.println(currentByte);
+        }
+        return userName;
+    }
+    public static boolean logIn(String password,String userName,ArrayList<User> users){
+        for (int i = 0; i <users.size() ; i++) {
+            if(userName.compareTo(users[i]))
+        }
+
+
     }
 
 
