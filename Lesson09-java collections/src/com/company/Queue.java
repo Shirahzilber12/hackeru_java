@@ -1,44 +1,60 @@
-
 package com.company;
 
 
 public class Queue {
     int[] arr;
-    int front, rear;
-    int size;
+    int front, rear, size;
 
     public Queue() {
-        arr = new int[4];
+        arr = new int[5];
         front = 0;
         rear = arr.length-1;
-        size=0;
+        size = 0;
     }
-    public int getSize(){
 
+
+    public int size(){
+        if(rear > front)
+            return rear - front + 1;
+        else
+            return arr.length - front + rear + 1;
     }
 
     public boolean isEmpty(){
         return size == 0;
     }
+
     public boolean isFull(){
-        return size==arr.length;
+        return size == arr.length;//front == rear
     }
 
     public void insert(int x){
         if(isFull())
-            throw new IndexOutOfBoundsException("יותר מדי אברים ");
-        rear = (rear +1)% arr.length ;
+            throw new IndexOutOfBoundsException();
+        rear = (rear + 1) % arr.length;
         arr[rear] = x;
         size++;
-        //System.out.print(arr[rear]+" ");
     }
 
     public int pop(){
         if(isEmpty())
             throw new IndexOutOfBoundsException();
         int x = arr[front];
-        front = (front % arr.length) + 1;
+        front = (front + 1)%arr.length;
+        size--;
         return x;
+    }
+
+    public int front(){
+        if(isEmpty())
+            throw new IndexOutOfBoundsException();
+        return arr[front];
+    }
+
+    public int rear(){
+        if(isEmpty())
+            throw new IndexOutOfBoundsException();
+        return arr[rear];
     }
 
 

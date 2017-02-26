@@ -113,5 +113,21 @@ public class User {
 
     }
 
+    public static void ex2(int[] arr) {
+        int temp;
+        int i = 0, j = arr.length - 1;
+        while (i < j) {
+            if (arr[i] % 2 != 0) {
+                temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+                j--;
+            } else {
+                i++;
+            }
+
+        }
+    }
+
 
 }
