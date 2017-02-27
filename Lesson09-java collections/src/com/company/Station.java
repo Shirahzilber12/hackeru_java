@@ -34,4 +34,18 @@ public class Station {
         }
         return -1;
     }
+    public static int findStation2(Station[] stations){
+        int sum=0;
+        int index=0;
+        for (int i = 0; i <stations.length ; i++) {
+            sum=sum+stations[i].charge-stations[i].distanceToNext;
+            if(sum<0) {
+                index = i+1;
+                sum=0;
+            }
+        }
+        return index;
+    }
+
 }
+
