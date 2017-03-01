@@ -7,17 +7,21 @@ public class MyString implements Comparable<MyString> {
     public MyString(char[] myChar) {
         this.myChar = myChar;
     }
-
+//צריך תיקון
     public int indexOf(MyString myString){
         int index=0;
-        for (int i = 0; i <myChar.length-myString.myChar.length; i++) {
+        int j=0;
+        for (int i = 1; i <myChar.length; i++) {
             if (myChar[i]==myString.myChar[0]){
                 index=i;
-                for (int j = 0; j <myString.myChar.length;j++ ) {
-                    if (!(myString.myChar[j]==myChar[i+j]))
-                    break;
+                for ( j = 0; j <myString.myChar.length&&i+j<myChar.length-1;j++ ) {
+                    if (!(myString.myChar[j]==myChar[i+j])) {
+                        i=i+j-1;
+                        break;
+                    }
                 }
-                return index;
+                if(j==myString.myChar.length-1)
+                    return index;
             }
         }
         return -1;
@@ -49,12 +53,14 @@ public class MyString implements Comparable<MyString> {
     @Override
     public int compareTo(MyString m) {
         int i = 0;
+        toUpper(m);
+        toUpper(this);
         if (m == null)
             return -1;
-            while ((i < m.myChar.length) && (i < myChar.length)) {
-            if (myChar[i] > m.myChar[i])
-                return 1;
+        while ((i < m.myChar.length) && (i < myChar.length)) {
             if (myChar[i] < m.myChar[i])
+                return 1;
+            if (myChar[i] > m.myChar[i])
                 return  -1;
             if(m.myChar[i] == myChar[i])
                 i++;
@@ -66,12 +72,12 @@ public class MyString implements Comparable<MyString> {
         return 0;
     }
 //מגדולות לקטנות מקטנות לגדולות
-    public void toUpper(MyString myString){
+    public static void toUpper(MyString myString){
        char[] chars=new char[myString.myChar.length];
         for (int i = 0; i <myString.myChar.length ; i++) {
-            if (myString.myChar[i] > 64 && myString.myChar[i] < 91 )
-                myString.myChar[i]+=32;
-            if (myString.myChar[i] > 96  && myString.myChar[i] < 123 )
+           /* if (myString.myChar[i] > 64 && myString.myChar[i] < 91 )
+                myString.myChar[i]+=32;*/
+          if (myString.myChar[i] > 96  && myString.myChar[i] < 123 )
                 myString.myChar[i]-=32;
 
         }
@@ -85,11 +91,14 @@ public class MyString implements Comparable<MyString> {
         return 1;
     }
 
-    @Override
+
     public boolean equals(Object obj) {
-        MyString m=(MyString)obj;
-        return myChar.length==m.myChar.length && indexOf(m)==0;
+        if(obj==null)return false;
+        if(obj instanceof MyString) {
+            MyString myString = (MyString) obj;
+            return (indexOf(myString) == 0) && (myString.myChar.length == this.myChar.length);
+        }
+        return false;
     }
 
-
-}
+    }

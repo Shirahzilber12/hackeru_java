@@ -6,6 +6,15 @@ public class Main {
 
 
     public static void main(String[] args) {
+
+        //String s1 = "asis";
+        //String s2 = "Tsis";
+        char[] temp1 = {'a','s','i','s'};
+        char[] temp2 = {'T', 's', 'i', 's'};
+        MyString s1 = new MyString(temp1);
+        MyString s2 = new MyString(temp2);
+        System.out.println( s1.compareTo(s2));
+
         Station[] stations = {
                 new Station(2, 3),
                 new Station(1, 2),
@@ -28,8 +37,8 @@ public class Main {
             }
         }*/
 
-        MyString myString=new MyString(new char[]{'H','e','l','l','o',' ','S','a','r','a','h'});
-        MyString Sarah=new MyString(new char[]{'S','a','r','a','h'});
+        MyString myString=new MyString(new char[]{'s','h','i','r','a','a'});
+        MyString Sarah=new MyString(new char[]{'s','h','i','r','a'});
         System.out.println();
         System.out.println("my index of"+" " +myString.indexOf(Sarah));
         MyString[] m=myString.spilt('e');
